@@ -453,7 +453,6 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
         }
 //      else {};
       }
-      }
     else
       {
       if (job->flags&SHARP_DP)
