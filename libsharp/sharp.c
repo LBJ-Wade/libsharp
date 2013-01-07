@@ -440,7 +440,7 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
     if (!(job->ainfo->flags&SHARP_PACKED_M0))
       {
       ofs *= 2;
-      stride *= 2
+      stride *= 2;
       }
     if (job->spin==0)
       {
