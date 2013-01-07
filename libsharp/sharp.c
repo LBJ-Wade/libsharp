@@ -447,11 +447,6 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
           COPY_LOOP(fcmplx, x)
         }
       else
-        {
-        if (job->flags&SHARP_DP)
-          COPY_LOOP(dcmplx, x)
-        else
-          COPY_LOOP(fcmplx, x)
         }
       }
     else
