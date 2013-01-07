@@ -437,6 +437,7 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
     {
     ptrdiff_t ofs=job->ainfo->mvstart[mi];
     int stride=job->ainfo->stride;
+    if (!(job->ainfo->flags&SHARP_PACKED_M0))
     if (job->spin==0)
       {
       if (job->ainfo->flags&SHARP_PACKED_M0)
@@ -446,8 +447,8 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
         else
           COPY_LOOP(fcmplx, x)
         }
-      else
-        }
+      else {};
+      }
       }
     else
       {
