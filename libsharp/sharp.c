@@ -471,12 +471,12 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
 static void almtmp2alm (sharp_job *job, int lmax, int mi)
   {
 
-#define COPY_LOOP(target_t, expr_of_x)                       \
+#define COPY_LOOP(real_t, target_t, expr_of_x)               \
   for (int l=job->ainfo->mval[mi]; l<=lmax; ++l)             \
     for (int i=0; i<job->ntrans*job->nalm; ++i)              \
       {                                                      \
         dcmplx x = job->almtmp[job->ntrans*job->nalm*l+i];   \
-        ((target_t *)job->alm[i])[ofs+l*stride] += expr_of_x; \
+        *(target_t *)(((real_t *)job->alm[i])+ofs+l*stride) += expr_of_x; \
       }
 
   if (job->type != SHARP_MAP2ALM) return;
