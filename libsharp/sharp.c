@@ -425,11 +425,11 @@ static void dealloc_almtmp (sharp_job *job)
 static void alm2almtmp (sharp_job *job, int lmax, int mi)
   {
 
-#define COPY_LOOP(source_t, expr_of_x)                      \
+#define COPY_LOOP(real_t, source_t, expr_of_x)                      \
   for (int l=job->ainfo->mval[mi]; l<=lmax; ++l)            \
     for (int i=0; i<job->ntrans*job->nalm; ++i)             \
       {                                                     \
-        source_t x = ((source_t *)job->alm[i])[ofs+l*stride]; \
+        source_t x = *(((real_t *)job->alm[i])+ofs+l*stride); \
         job->almtmp[job->ntrans*job->nalm*l+i] = expr_of_x; \
       }
 
