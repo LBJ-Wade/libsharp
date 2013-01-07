@@ -482,6 +482,11 @@ static void almtmp2alm (sharp_job *job, int lmax, int mi)
   if (job->type != SHARP_MAP2ALM) return;
   ptrdiff_t ofs=job->ainfo->mvstart[mi];
   int stride=job->ainfo->stride;
+  if (!(job->ainfo->flags&SHARP_PACKED_M0))
+    {
+    ofs *= 2;
+    stride *= 2;
+    }
   if (job->spin==0)
     {
     if (job->flags&SHARP_DP)
