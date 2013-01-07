@@ -438,6 +438,10 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
     ptrdiff_t ofs=job->ainfo->mvstart[mi];
     int stride=job->ainfo->stride;
     if (!(job->ainfo->flags&SHARP_PACKED_M0))
+      {
+      ofs *= 2;
+      stride *= 2
+      }
     if (job->spin==0)
       {
 //      if (job->ainfo->flags&SHARP_PACKED_M0)
