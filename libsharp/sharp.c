@@ -447,9 +447,9 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
 //      if (job->ainfo->flags&SHARP_PACKED_M0)
         {
         if (job->flags&SHARP_DP)
-          COPY_LOOP(dcmplx, x)
+          COPY_LOOP(double, dcmplx, x)
         else
-          COPY_LOOP(fcmplx, x)
+          COPY_LOOP(float, fcmplx, x)
         }
 //      else {};
       }
@@ -457,9 +457,9 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
     else
       {
       if (job->flags&SHARP_DP)
-        COPY_LOOP(dcmplx, x*job->norm_l[l])
+        COPY_LOOP(double, dcmplx, x*job->norm_l[l])
       else
-        COPY_LOOP(fcmplx, x*job->norm_l[l])
+        COPY_LOOP(float, fcmplx, x*job->norm_l[l])
       }
     }
   else
