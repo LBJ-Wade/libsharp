@@ -429,7 +429,7 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
   for (int l=job->ainfo->mval[mi]; l<=lmax; ++l)            \
     for (int i=0; i<job->ntrans*job->nalm; ++i)             \
       {                                                     \
-        source_t x = *(((real_t *)job->alm[i])+ofs+l*stride); \
+        source_t x = *(source_t *)(((real_t *)job->alm[i])+ofs+l*stride); \
         job->almtmp[job->ntrans*job->nalm*l+i] = expr_of_x; \
       }
 
