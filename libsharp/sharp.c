@@ -124,7 +124,7 @@ static int ringpair_compare (const void *xa, const void *xb)
   }
 
 void sharp_make_general_alm_info (int lmax, int nm, int stride, const int *mval,
-  const ptrdiff_t *mstart, sharp_alm_info **alm_info)
+  const ptrdiff_t *mstart, int flags, sharp_alm_info **alm_info)
   {
   sharp_alm_info *info = RALLOC(sharp_alm_info,1);
   info->lmax = lmax;
@@ -132,6 +132,7 @@ void sharp_make_general_alm_info (int lmax, int nm, int stride, const int *mval,
   info->mval = RALLOC(int,nm);
   info->mvstart = RALLOC(ptrdiff_t,nm);
   info->stride = stride;
+  info->flags = flags;
   for (int mi=0; mi<nm; ++mi)
     {
     info->mval[mi] = mval[mi];
@@ -146,9 +147,15 @@ void sharp_make_alm_info (int lmax, int mmax, int stride,
   int *mval=RALLOC(int,mmax+1);
   for (int i=0; i<=mmax; ++i)
     mval[i]=i;
-  sharp_make_general_alm_info (lmax, mmax+1, stride, mval, mstart, alm_info);
+  sharp_make_general_alm_info (lmax, mmax+1, stride, mval, mstart, 0, alm_info);
   DEALLOC(mval);
   }
+
+/*void sharp_init_alm_info(sharp_alm_info **alm_info)
+  {
+  if (flags & SHARP_PACKED_M0) {
+  }  
+  }*/
 
 ptrdiff_t sharp_alm_index (const sharp_alm_info *self, int l, int mi)
   { return self->mvstart[mi]+self->stride*l; }
