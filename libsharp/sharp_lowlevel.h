@@ -86,8 +86,7 @@ typedef struct
   } sharp_alm_info;
 
 /*! alm_info flags */
-typedef enum { SHARP_REAL_ALM_INDICES = 1, /*< internal use */
-               SHARP_PACKED_M0 = SHARP_REAL_ALM_INDICES | 2
+typedef enum { SHARP_PACKED_M0 = 1
                /*< m=0-coefficients are packed so that the (zero) imaginary part is
                    not present. mvstart is in units of *real* float/double for all
                    m; stride is in units of reals for m=0 and complex for m!=0 */
