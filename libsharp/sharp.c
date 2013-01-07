@@ -448,7 +448,7 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
       real_m0 = (job->ainfo->mval[mi] == 0);
     if (job->spin==0)
       {
-//      if (job->ainfo->flags&SHARP_PACKED_M0)
+      if (real_m0)
         {
         if (job->flags&SHARP_DP)
           COPY_LOOP(double, dcmplx, x)
