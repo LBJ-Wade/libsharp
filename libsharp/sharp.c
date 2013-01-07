@@ -465,11 +465,20 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
       }
     else
       {
-      if (job->flags&SHARP_DP)
-        COPY_LOOP(double, dcmplx, x*job->norm_l[l])
+      if (real_m0)
+        {
+        if (job->flags&SHARP_DP)
+          COPY_LOOP(double, dcmplx, x*job->norm_l[l])
+        else
+          COPY_LOOP(float, fcmplx, x*job->norm_l[l])
+        }
       else
-        COPY_LOOP(float, fcmplx, x*job->norm_l[l])
-      }
+        {
+        if (job->flags&SHARP_DP)
+          COPY_LOOP(double, dcmplx, x*job->norm_l[l])
+        else
+          COPY_LOOP(float, fcmplx, x*job->norm_l[l])
+        }
     }
   else
     SET_ARRAY(job->almtmp,job->ntrans*job->nalm*job->ainfo->mval[mi],
