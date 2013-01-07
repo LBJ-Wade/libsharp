@@ -490,16 +490,16 @@ static void almtmp2alm (sharp_job *job, int lmax, int mi)
   if (job->spin==0)
     {
     if (job->flags&SHARP_DP)
-      COPY_LOOP(dcmplx, x)
+      COPY_LOOP(double, dcmplx, x)
     else
-      COPY_LOOP(fcmplx, (fcmplx)x)
+      COPY_LOOP(float, fcmplx, (fcmplx)x)
     }
   else
     {
     if (job->flags&SHARP_DP)
-      COPY_LOOP(dcmplx, x * job->norm_l[l])
+      COPY_LOOP(double, dcmplx, x * job->norm_l[l])
     else
-      COPY_LOOP(fcmplx, (fcmplx)(x * job->norm_l[l]))
+      COPY_LOOP(float, fcmplx, (fcmplx)(x * job->norm_l[l]))
     }
 
 #undef COPY_LOOP
