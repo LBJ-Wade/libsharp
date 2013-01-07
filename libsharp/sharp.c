@@ -439,11 +439,14 @@ static void alm2almtmp (sharp_job *job, int lmax, int mi)
     int stride=job->ainfo->stride;
     if (job->spin==0)
       {
-      if (job->flags&SHARP_DP)
-        COPY_LOOP(dcmplx, x)
-      else
-        COPY_LOOP(fcmplx, x)
-      }
+      if (job->ainfo->flags&SHARP_PACKED_M0)
+        {
+        if (job->flags&SHARP_DP)
+          COPY_LOOP(dcmplx, x)
+        else
+          COPY_LOOP(fcmplx, x)
+        }
+        }
     else
       {
       if (job->flags&SHARP_DP)
