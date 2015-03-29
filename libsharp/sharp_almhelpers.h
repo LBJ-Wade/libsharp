@@ -50,6 +50,9 @@ void sharp_make_triangular_alm_info (int lmax, int mmax, int stride,
 void sharp_make_rectangular_alm_info (int lmax, int mmax, int stride,
   sharp_alm_info **alm_info);
 
+void sharp_make_mmajor_real_packed_alm_info (int lmax, int mmax, int stride,
+  sharp_alm_info **alm_info);
+
 #ifdef __cplusplus
 }
 #endif
